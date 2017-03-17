@@ -3,7 +3,13 @@ api_version: 1
 threadsafe: true
 
 handlers:
+- url: /_ah/queue/deferred
+  script: google.appengine.ext.deferred.deferred.application
+  login: admin
 - url: /_ah/pipeline.*
   script: pipeline.handlers._APP
 - url: /.*
   script: main.app
+
+builtins:
+- deferred: on
